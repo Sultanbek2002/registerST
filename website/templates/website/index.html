@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration and Authentication Form</title>
+    <!-- Подключение библиотеки Bootstrap для стилизации -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div>
+        <div>DASJJJCJAJ</div>
+        {% if user.is_authenticated %}
+        <h1>Вы авторизованы</h1>{{user.username}}
+        <a href="{% url 'logout' %}">LOgout</a>
+        {% else %}
+        <div>
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+        <div>
+            <a href="{% url 'register' %}">Registration</a>
+        </div>
+        {% endif %}
+        <div>
+            dafjfdgayugdhhsah
+        </div>
+    </div>
+</div>
+<!-- Подключение скриптов Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
