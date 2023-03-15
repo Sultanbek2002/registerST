@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import StudentForm
 from django.contrib import auth
+from django.contrib.auth import logout
 from django.contrib.auth.models import User
 
 
@@ -22,13 +23,18 @@ def register(request):
     if request.method == 'POST':
         form = StudentForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = User.objects.create_superuser(username=request.POST['username'],
+                                                 email=request.POST['email'],
+                                                 password=request.POST['password'],
+                                                 first_name=request.POST['first_name'],
+                                                 last_name=request.POST['last_name'])
+            user.save()
             return redirect('home')
     else:
         form = StudentForm()
-    return render(request, 'useaccounts/register.html', {'form': StudentForm})
+    return render(request, 'useaccounts/register.html', {'form': form})
 
 
 def logout(request):
-    auth.logout(request)
+    logout(request)
     return redirect('home')

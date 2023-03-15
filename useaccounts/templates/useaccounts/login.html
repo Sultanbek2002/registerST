@@ -10,7 +10,7 @@
 
 <div>
     <h1>Login Form</h1>
-    <form method="post" action="{% url 'login' %}">
+    <form  action="{% url 'login' %}" method="POST">
         {% csrf_token %}
         <div class="form-group">
             <label for="username">Username:</label>

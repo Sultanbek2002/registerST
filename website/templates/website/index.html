@@ -1,34 +1,241 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+{% load static %}
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Registration and Authentication Form</title>
-    <!-- Подключение библиотеки Bootstrap для стилизации -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Prologue by HTML5 UP</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css"/>
+    <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}"/>
 </head>
-<body>
-<div class="container">
-    <div>
-        <div>DASJJJCJAJ</div>
-        {% if user.is_authenticated %}
-        <h1>Вы авторизованы</h1>{{user.username}}
-        <a href="{% url 'logout' %}">LOgout</a>
-        {% else %}
-        <div>
-            <a href="{% url 'login' %}">Login</a>
+<body class="is-preload">
+
+<!-- Header -->
+<div id="header">
+
+    <div class="top">
+
+        <!-- Logo -->
+        <div id="logo">
+            <span class="image avatar48"><img src="{% static 'images/avatar.jpg' %}" alt=""/>
+                        <a href="{% url 'logout' %}" style="font-size:20px;">Logout</a>
+        </span>
+            <h1 id="title">Jane Doe</h1>
+            <p>Hyperspace Engineer</p>
         </div>
-        <div>
-            <a href="{% url 'register' %}">Registration</a>
-        </div>
-        {% endif %}
-        <div>
-            dafjfdgayugdhhsah
-        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="#top" id="top-link"><span class="icon solid fa-home">Intro</span></a></li>
+                <li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a></li>
+                <li><a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a></li>
+                <li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">Contact</span></a></li>
+            </ul>
+        </nav>
+
     </div>
+
+    <div class="bottom">
+
+        <!-- Social Icons -->
+        <ul class="icons">
+            <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+            <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+            <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+
+    </div>
+
 </div>
-<!-- Подключение скриптов Bootstrap -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- Main -->
+<div id="main">
+
+    <!-- Intro -->
+    <section id="top" class="one dark cover">
+        <div class="container">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="container-fluid p-0">
+                <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="True"></span>
+                         {{ message }}
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            <header>
+                <h2 class="alt">Hi! I'm <strong>Prologue</strong>, a <a href="http://html5up.net/license">free</a>
+                    responsive<br/>
+                    site template designed by <a href="http://html5up.net">HTML5 UP</a>.</h2>
+                <p>Ligula scelerisque justo sem accumsan diam quis<br/>
+                    vitae natoque dictum sollicitudin elementum.</p>
+            </header>
+
+            <footer>
+                <a href="#portfolio" class="button scrolly">Magna Aliquam</a>
+            </footer>
+
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    {% if user.is_authenticated %}
+
+    <section id="portfolio" class="two">
+        <div class="container">
+
+            <header>
+                <h2>Portfolio</h2>
+            </header>
+
+            <p>Vitae natoque dictum etiam semper magnis enim feugiat convallis convallis
+                egestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.
+                Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quis
+                fusce hendrerit lacus ridiculus.</p>
+
+            <div class="row">
+                <div class="col-4 col-12-mobile">
+                    <article class="item">
+                        <a href="#" class="image fit"><img src="{% static 'images/pic02.jpg' %}" alt=""/></a>
+                        <header>
+                            <h3>Ipsum Feugiat</h3>
+                        </header>
+                    </article>
+                    <article class="item">
+                        <a href="#" class="image fit"><img src="{% static 'images/pic03.jpg' %}" alt=""/></a>
+                        <header>
+                            <h3>Rhoncus Semper</h3>
+                        </header>
+                    </article>
+                </div>
+                <div class="col-4 col-12-mobile">
+                    <article class="item">
+                        <a href="#" class="image fit"><img src="images/pic04.jpg" alt=""/></a>
+                        <header>
+                            <h3>Magna Nullam</h3>
+                        </header>
+                    </article>
+                    <article class="item">
+                        <a href="#" class="image fit"><img src="images/pic05.jpg" alt=""/></a>
+                        <header>
+                            <h3>Natoque Vitae</h3>
+                        </header>
+                    </article>
+                </div>
+                <div class="col-4 col-12-mobile">
+                    <article class="item">
+                        <a href="#" class="image fit"><img src="images/pic06.jpg" alt=""/></a>
+                        <header>
+                            <h3>Dolor Penatibus</h3>
+                        </header>
+                    </article>
+                    <article class="item">
+                        <a href="#" class="image fit"><img src="images/pic07.jpg" alt=""/></a>
+                        <header>
+                            <h3>Orci Convallis</h3>
+                        </header>
+                    </article>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about" class="three">
+        <div class="container">
+
+            <header>
+                <h2>About Me</h2>
+            </header>
+
+            <a href="#" class="image featured"><img src="{% static 'images/pic08.jpg' %}" alt=""/></a>
+
+            <p>Tincidunt eu elit diam magnis pretium accumsan etiam id urna. Ridiculus
+                ultricies curae quis et rhoncus velit. Lobortis elementum aliquet nec vitae
+                laoreet eget cubilia quam non etiam odio tincidunt montes. Elementum sem
+                parturient nulla quam placerat viverra mauris non cum elit tempus ullamcorper
+                dolor. Libero rutrum ut lacinia donec curae mus vel quisque sociis nec
+                ornare iaculis.</p>
+
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="four">
+        <div class="container">
+
+            <header>
+                <h2>Contact</h2>
+            </header>
+
+            <p>Elementum sem parturient nulla quam placerat viverra
+                mauris non cum elit tempus ullamcorper dolor. Libero rutrum ut lacinia
+                donec curae mus. Eleifend id porttitor ac ultricies lobortis sem nunc
+                orci ridiculus faucibus a consectetur. Porttitor curae mauris urna mi dolor.</p>
+
+            <form method="post" action="#">
+                <div class="row">
+                    <div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name"/></div>
+                    <div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email"/></div>
+                    <div class="col-12">
+                        <textarea name="message" placeholder="Message"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <input type="submit" value="Send Message"/>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </section>
+
+</div>
+{% else %}
+<div class="container d-flex justify-content-around my-5">
+    <div class="bg-primary"><a href="{% url 'login' %}" class="p-3  text-light text-decoration-none">Login</a></div>
+    <div class="bg-primary"><a href="{% url 'register' %}" class="p-3  text-light text-decoration-none">
+        Registration</a></div>
+</div>
+{% endif %}
+
+
+<!-- Footer -->
+<div id="footer">
+
+    <!-- Copyright -->
+    <ul class="copyright">
+        <li>&copy; Untitled. All rights reserved.</li>
+        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+
+</div>
+
+<!-- Scripts -->
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
+<script src="{% static 'assets/js/browser.min.js' %}"></script>
+<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+<script src="{% static 'assets/js/util.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+
 </body>
 </html>
